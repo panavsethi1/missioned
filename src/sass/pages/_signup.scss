@@ -1,0 +1,16 @@
+.signup {
+    height: calc(100vh - 4rem);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: rgba($color-primary-grey, 0.2);
+    &__box {
+        text-align: center;
+        width: 20rem;
+        background-color: $color-white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px $color-primary-grey;
+    }
+}

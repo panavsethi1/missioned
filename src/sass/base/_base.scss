@@ -1,11 +1,15 @@
 *,
 *::after,
 *::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    margin: 2rem;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
