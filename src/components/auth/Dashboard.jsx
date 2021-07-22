@@ -1,29 +1,42 @@
 import { CircularProgress } from '@material-ui/core'
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
+import StudentDashboard from '../dashboard/StudentDashboard'
 import firebase from '../firebase'
 
 function Dashboard(props) {
     const [type, setType] = useState('')
 
     if (
-        !firebase.getCurrentUsername() &&
-        !sessionStorage.getItem(
-            'firebase:authUser:AIzaSyALCuPpZu8Eua604_hkldobTB9fM1jx7P8:[DEFAULT]'
-        )
+        !sessionStorage[Object.keys(sessionStorage)[0]] &&
+        !firebase.getCurrentUsername()
     ) {
-        alert('Error: Please login first.')
+        alert("You're logged out.")
         props.history.replace('/login')
         return null
     } else {
         firebase.getCurrentUserType().then(setType)
     }
+
     const name = firebase.getCurrentUsername()
 
+    const handleLogout = async () => {
+        try {
+            await firebase.logout()
+            props.history.replace('/dashboard')
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     return type !== '' && name !== '' ? (
-        <div>
-            Hi, I'm {name}, a {type}{' '}
-        </div>
+        type === 'student' ? (
+            <div>
+                <StudentDashboard />
+            </div>
+        ) : (
+            <div>Mentor</div>
+        )
     ) : (
         <div className="loader">
             <CircularProgress />

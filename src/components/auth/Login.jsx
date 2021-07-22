@@ -22,7 +22,7 @@ function Login(props) {
             await firebase.login(email, password)
             props.history.replace('/dashboard')
         } catch (err) {
-            alert(err)
+            alert(err.message)
         }
     }
 

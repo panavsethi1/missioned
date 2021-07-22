@@ -1,0 +1,52 @@
+{
+    "subejcts": [
+        {
+            "maths": {
+                "videos": [
+                    {
+                        "title": "",
+                        "descriptiton": "",
+                        "thumbnail": "",
+                        "src": ""
+                    }
+                ]
+            }
+        },
+        {
+            "physics": {
+                "videos": [
+                    {
+                        "title": "",
+                        "descriptiton": "",
+                        "thumbnail": "",
+                        "src": ""
+                    }
+                ]
+            }
+        },
+        {
+            "chemistry": {
+                "videos": [
+                    {
+                        "title": "",
+                        "descriptiton": "",
+                        "thumbnail": "",
+                        "src": ""
+                    }
+                ]
+            }
+        },
+        {
+            "biology": {
+                "videos": [
+                    {
+                        "title": "",
+                        "descriptiton": "",
+                        "thumbnail": "",
+                        "src": ""
+                    }
+                ]
+            }
+        }
+    ]
+}

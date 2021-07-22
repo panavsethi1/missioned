@@ -8,14 +8,61 @@
     text-decoration: none;
     box-shadow: 0 1px 2px $color-primary-grey;
     transition: all 0.2s;
+
     &:hover {
         transform: translateY(-4px);
         box-shadow: 0 2px 4px $color-primary-grey;
     }
+
     &--white {
         background-color: $color-white;
         color: $color-primary-orange-dark;
     }
+
+    &--maths {
+        margin-top: 1rem;
+        padding: 0.5rem;
+        color: $color-green-dark;
+        display: none;
+
+        @include respond(tab-land) {
+            display: initial;
+        }
+    }
+
+    &--physics {
+        margin-top: 1rem;
+        padding: 0.5rem;
+        color: $color-red;
+        display: none;
+
+        @include respond(tab-land) {
+            display: initial;
+        }
+    }
+
+    &--biology {
+        margin-top: 1rem;
+        padding: 0.5rem;
+        color: $color-blue-dark;
+        display: none;
+
+        @include respond(tab-land) {
+            display: initial;
+        }
+    }
+
+    &--chemistry {
+        margin-top: 1rem;
+        padding: 0.5rem;
+        color: $color-purple;
+        display: none;
+
+        @include respond(tab-land) {
+            display: initial;
+        }
+    }
+
     &--signup {
         display: block;
         text-transform: uppercase;

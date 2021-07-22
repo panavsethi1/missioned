@@ -1,0 +1,52 @@
+.student-dashboard {
+    &__hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: 40vh;
+        width: 100%;
+        background-position: center;
+        background-size: cover;
+        background-image: linear-gradient(
+                to right bottom,
+                $color-primary-orange-dark,
+                rgba($color-primary-orange-light, 0.6)
+            ),
+            url(images/student-dashboard-hero.jpg);
+        &__search {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem auto 0;
+            padding: 0 0.5rem;
+            background-color: $color-white;
+            border-radius: 5px;
+            &__input {
+                font-family: 'Montserrat', sans-serif;
+                display: block;
+                height: 2rem;
+                width: 100%;
+                outline: none;
+                border: none;
+            }
+            & a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            &__icon {
+                width: 1.2rem;
+                height: auto;
+                margin-left: 2px;
+                filter: invert(40%) sepia(63%) saturate(3353%)
+                    hue-rotate(346deg) brightness(92%) contrast(99%);
+            }
+        }
+    }
+
+    &__subjects {
+        @include respond(tab-port) {
+            padding: 0 2rem;
+        }
+    }
+}

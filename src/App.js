@@ -7,6 +7,8 @@ import Login from './components/auth/Login'
 import Dashboard from './components/auth/Dashboard'
 import { CircularProgress } from '@material-ui/core'
 import firebase from './components/firebase'
+import VideoPlayer from './components/dashboard/subjects/VideoPlayer'
+import Subject from './components/dashboard/subjects/Subject'
 
 function App() {
     const [isInit, setIsInit] = useState('false')
@@ -24,6 +26,12 @@ function App() {
                 <Route path="/signup" exact component={Signup} />
                 <Route path="/login" exact component={Login} />
                 <Route path="/dashboard" exact component={Dashboard} />
+                <Route path="/dashboard/:subject" exact component={Subject} />
+                <Route
+                    path="/dashboard/:subject/:id"
+                    exact
+                    component={VideoPlayer}
+                />
             </Switch>
         </Router>
     ) : (

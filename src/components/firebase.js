@@ -14,26 +14,29 @@ var firebaseConfig = {
 
 class Firebase {
     constructor() {
-        app.initializeApp(firebaseConfig)
+        if (!app.length) {
+            app.initializeApp(firebaseConfig)
+        }
         this.auth = app.auth()
         this.db = app.firestore()
     }
 
-    login(email, password) {
-        return this.auth
+    async login(email, password) {
+        return await this.auth
             .setPersistence(app.auth.Auth.Persistence.SESSION)
             .then(() => {
                 return this.auth.signInWithEmailAndPassword(email, password)
             })
             .catch((error) => {
-                alert(error.code)
                 alert(error.message)
             })
         // return this.auth.signInWithEmailAndPassword(email, password)
     }
 
     logout() {
-        return this.auth.signOut()
+        return this.auth
+            ? this.auth.signOut()
+            : delete sessionStorage[Object.keys(sessionStorage)[0]]
     }
 
     async register(name, email, password) {
@@ -72,15 +75,9 @@ class Firebase {
     }
 
     async getCurrentUserType() {
-        if (
-            sessionStorage.getItem(
-                'firebase:authUser:AIzaSyALCuPpZu8Eua604_hkldobTB9fM1jx7P8:[DEFAULT]'
-            )
-        ) {
+        if (sessionStorage[Object.keys(sessionStorage)[0]]) {
             const uid = JSON.parse(
-                sessionStorage.getItem(
-                    'firebase:authUser:AIzaSyALCuPpZu8Eua604_hkldobTB9fM1jx7P8:[DEFAULT]'
-                )
+                sessionStorage[Object.keys(sessionStorage)[0]]
             ).uid
             const user = await this.db.doc(`users/${uid}`).get()
             return user.get('type')
@@ -90,6 +87,41 @@ class Firebase {
                 .get()
             return user.get('type')
         }
+    }
+
+    async getSubjectList() {
+        let results = []
+        const subjectsRef = this.db.collection('subjects')
+        const snapshot = await subjectsRef.get()
+        snapshot.forEach((doc) => {
+            results.push(doc.id)
+        })
+        return results
+    }
+
+    async getVideoList(subject) {
+        const cityRef = this.db.collection('subjects').doc(subject)
+        const doc = await cityRef.get()
+        if (!doc.exists) {
+            console.log('No such document!')
+        } else {
+            return doc.data()
+        }
+    }
+
+    async sendMessage(msg, subject) {
+        const messagesRef = this.db.collection(`${subject}-messages`)
+        let uid
+        this.auth.currentUser
+            ? (uid = this.auth.currentUser.uid)
+            : (uid = JSON.parse(
+                  sessionStorage[Object.keys(sessionStorage)[0]]
+              ).uid)
+        return await messagesRef.add({
+            text: msg,
+            createdAt: new Date(),
+            uid,
+        })
     }
 }
 

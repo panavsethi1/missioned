@@ -8,6 +8,11 @@
 
 html {
     margin: 2rem;
+    scroll-behavior: smooth;
+
+    @include respond(tab-port) {
+        margin: 0;
+    }
 }
 
 body {

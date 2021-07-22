@@ -6,7 +6,11 @@
   box-sizing: border-box; }
 
 html {
-  margin: 2rem; }
+  margin: 2rem;
+  scroll-behavior: smooth; }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      margin: 0; } }
 
 body {
   font-family: 'Montserrat', sans-serif; }
@@ -37,6 +41,44 @@ body {
   color: #e94822;
   font-size: 2.5rem; }
 
+.heading-dashboard {
+  color: #fff;
+  text-align: center;
+  min-width: 367px; }
+  .heading-dashboard--subject {
+    font-size: 4rem;
+    font-weight: 500; }
+  .heading-dashboard--main {
+    font-family: 'Dancing Script', cursive;
+    font-size: 5rem; }
+  .heading-dashboard--sub {
+    font-weight: 400;
+    font-size: 1.5rem; }
+
+.heading-subject {
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: 600;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, #e94822, #f2910a);
+  transition: all 0.2s; }
+  .heading-subject:hover {
+    transform: skew(5deg, 5deg); }
+  .heading-subject--biology {
+    background-image: linear-gradient(to right, #04009a, #3edbf0); }
+  .heading-subject--chemistry {
+    background-image: linear-gradient(to right, #a73489, #ff3d68); }
+  .heading-subject--maths {
+    background-image: linear-gradient(to right, #50cb93, #54e346); }
+  .heading-subject--physics {
+    background-image: linear-gradient(to right, #ff0000, #ffbd39); }
+
 .u-margin-bottom-small {
   margin-bottom: 1.5rem; }
 
@@ -62,6 +104,38 @@ body {
   .button--white {
     background-color: #fff;
     color: #e94822; }
+  .button--maths {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    color: #50cb93;
+    display: none; }
+    @media only screen and (max-width: 75em) {
+      .button--maths {
+        display: initial; } }
+  .button--physics {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    color: #ff0000;
+    display: none; }
+    @media only screen and (max-width: 75em) {
+      .button--physics {
+        display: initial; } }
+  .button--biology {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    color: #04009a;
+    display: none; }
+    @media only screen and (max-width: 75em) {
+      .button--biology {
+        display: initial; } }
+  .button--chemistry {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    color: #a73489;
+    display: none; }
+    @media only screen and (max-width: 75em) {
+      .button--chemistry {
+        display: initial; } }
   .button--signup {
     display: block;
     text-transform: uppercase;
@@ -77,14 +151,48 @@ body {
     .button--signup:hover {
       background-color: #dc3c16; }
 
+.subject-menu a {
+  text-decoration: none; }
+
+.swiper-container {
+  margin: 2rem auto;
+  width: 100%;
+  height: 100%; }
+
+.swiper-slide {
+  text-align: center; }
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: all 0.2s;
+    margin: 1rem;
+    box-shadow: 0 1px 12px rgba(44, 45, 52, 0.6); }
+    .swiper-slide img:hover {
+      transform: scale(1.1); }
+  .swiper-slide p {
+    font-size: 1rem;
+    margin: 1rem auto auto 1rem;
+    color: #2c2d34;
+    text-transform: uppercase;
+    font-weight: 500; }
+
 .home {
   height: calc(100vh - 4rem); }
+  @media only screen and (max-width: 56.25em) {
+    .home {
+      height: 100vh; } }
   .home__hero {
     width: 100%;
     height: 100%;
     background-image: linear-gradient(to right bottom, #e94822, rgba(242, 145, 10, 0.8)), url(images/hero-backdrop.jpeg);
     background-size: cover;
     background-position: center; }
+    @media only screen and (max-width: 37.5em) {
+      .home__hero {
+        background-position: right; } }
     .home__hero__box {
       position: absolute;
       top: 50%;
@@ -112,10 +220,14 @@ body {
               margin-right: 2rem; } }
 
 .loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 .signup {
   height: calc(100vh - 4rem);
@@ -130,3 +242,92 @@ body {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px #2c2d34; }
+
+.student-dashboard__hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 40vh;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-image: linear-gradient(to right bottom, #e94822, rgba(242, 145, 10, 0.6)), url(images/student-dashboard-hero.jpg); }
+  .student-dashboard__hero__search {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem auto 0;
+    padding: 0 0.5rem;
+    background-color: #fff;
+    border-radius: 5px; }
+    .student-dashboard__hero__search__input {
+      font-family: 'Montserrat', sans-serif;
+      display: block;
+      height: 2rem;
+      width: 100%;
+      outline: none;
+      border: none; }
+    .student-dashboard__hero__search a {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+    .student-dashboard__hero__search__icon {
+      width: 1.2rem;
+      height: auto;
+      margin-left: 2px;
+      filter: invert(40%) sepia(63%) saturate(3353%) hue-rotate(346deg) brightness(92%) contrast(99%); }
+
+@media only screen and (max-width: 56.25em) {
+  .student-dashboard__subjects {
+    padding: 0 2rem; } }
+
+.subject__hero {
+  position: relative;
+  height: 40vh;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .subject__hero--biology {
+    background-image: linear-gradient(to right bottom, #04009a, rgba(62, 219, 240, 0.7)), url(images/biology.jpg); }
+  .subject__hero--maths {
+    background-image: linear-gradient(to right bottom, #50cb93, rgba(84, 227, 70, 0.6)), url(images/maths.jpg); }
+  .subject__hero--physics {
+    background-image: linear-gradient(to right bottom, #ff0000, rgba(255, 189, 57, 0.6)), url(images/physics.jpg); }
+  .subject__hero--chemistry {
+    background-image: linear-gradient(to right bottom, #a73489, rgba(255, 61, 104, 0.7)), url(images/chemistry.jpg); }
+
+.subject__content {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  @media only screen and (max-width: 75em) {
+    .subject__content {
+      flex-direction: column; } }
+  .subject__content__videos {
+    width: 70%;
+    margin-right: 2rem; }
+    .subject__content__videos__thumbnail {
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 1px 12px rgba(44, 45, 52, 0.6); }
+      @media only screen and (max-width: 37.5em) {
+        .subject__content__videos__thumbnail {
+          width: 80%; } }
+    .subject__content__videos__title {
+      margin-top: 1rem;
+      color: #2c2d34;
+      text-transform: uppercase;
+      font-weight: 500; }
+    @media only screen and (max-width: 75em) {
+      .subject__content__videos {
+        width: 100%;
+        margin-right: 0; } }
+  .subject__content__chat {
+    width: 30%; }
+    @media only screen and (max-width: 75em) {
+      .subject__content__chat {
+        width: 100%; } }

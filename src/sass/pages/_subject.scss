@@ -1,0 +1,93 @@
+.subject {
+    &__hero {
+        position: relative;
+        height: 40vh;
+        width: 100%;
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &--biology {
+            background-image: linear-gradient(
+                    to right bottom,
+                    $color-blue-dark,
+                    rgba($color-blue-light, 0.7)
+                ),
+                url(images/biology.jpg);
+        }
+
+        &--maths {
+            background-image: linear-gradient(
+                    to right bottom,
+                    $color-green-dark,
+                    rgba($color-green-light, 0.6)
+                ),
+                url(images/maths.jpg);
+        }
+
+        &--physics {
+            background-image: linear-gradient(
+                    to right bottom,
+                    $color-red,
+                    rgba($color-mustard, 0.6)
+                ),
+                url(images/physics.jpg);
+        }
+
+        &--chemistry {
+            background-image: linear-gradient(
+                    to right bottom,
+                    #a73489,
+                    rgba(#ff3d68, 0.7)
+                ),
+                url(images/chemistry.jpg);
+        }
+    }
+
+    &__content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include respond(tab-land) {
+            flex-direction: column;
+        }
+
+        &__videos {
+            width: 70%;
+            margin-right: 2rem;
+
+            &__thumbnail {
+                width: 100%;
+                border-radius: 5px;
+                box-shadow: 0 1px 12px rgba($color-primary-grey, 0.6);
+                @include respond(phone) {
+                    width: 80%;
+                }
+            }
+
+            &__title {
+                margin-top: 1rem;
+                color: $color-primary-grey;
+                text-transform: uppercase;
+                font-weight: 500;
+            }
+
+            @include respond(tab-land) {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+
+        &__chat {
+            width: 30%;
+
+            @include respond(tab-land) {
+                width: 100%;
+            }
+        }
+    }
+}
